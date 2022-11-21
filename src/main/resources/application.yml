@@ -1,0 +1,17 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: application
+  profiles:
+    active: dev, awsdb, mail
+  config:
+    import: optional:configserver:http://13.125.28.145:9999 # config server 주소
+
+# Spring Actuator 설정
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

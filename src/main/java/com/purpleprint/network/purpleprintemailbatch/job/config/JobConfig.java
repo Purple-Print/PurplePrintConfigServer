@@ -1,5 +1,11 @@
 package com.purpleprint.network.purpleprintemailbatch.job.config;
 
+import com.purpleprint.network.purpleprintemailbatch.analysis.command.query.service.AnalysisService;
+import com.purpleprint.network.purpleprintemailbatch.analysis.command.domain.model.Analysis;
+import com.purpleprint.network.purpleprintemailbatch.heart.command.application.dto.RecipientDTO;
+import com.purpleprint.network.purpleprintemailbatch.heart.query.service.HeartService;
+import com.purpleprint.network.purpleprintemailbatch.user.command.application.dto.PlayFriendDTO;
+import com.purpleprint.network.purpleprintemailbatch.user.query.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -9,6 +15,8 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -33,13 +41,21 @@ public class JobConfig {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
+    private final AnalysisService analysisService;
+    private final HeartService heartService;
+    private final UserService userService;
 
     @Value("${job.name}")
     private String BATCH_NAME;
 
-    public JobConfig(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory) {
+    private List<Analysis> analysisList;
+
+    public JobConfig(JobBuilderFactory jobBuilderFactory, StepBuilderFactory stepBuilderFactory, AnalysisService analysisService, HeartService heartService, UserService userService) {
         this.jobBuilderFactory = jobBuilderFactory;
         this.stepBuilderFactory = stepBuilderFactory;
+        this.analysisService = analysisService;
+        this.heartService = heartService;
+        this.userService = userService;
     }
 
     @Bean
@@ -54,8 +70,10 @@ public class JobConfig {
     public Step step1() {
         return stepBuilderFactory.get(BATCH_NAME + "step 1")
                 .tasklet((stepContribution, chunkContext) -> {
-                    log.debug("============ 전송 시작 =============");
-                    System.out.println("첫번째 테스트");
+                    log.debug("============ 분석 리스트 호출 =============");
+                    System.out.println("1. 분석 리스트 호출");
+                    analysisList = analysisService.selectAnalysisList();
+                    System.out.println(analysisList);
                     return RepeatStatus.FINISHED;
                 }).build();
     }

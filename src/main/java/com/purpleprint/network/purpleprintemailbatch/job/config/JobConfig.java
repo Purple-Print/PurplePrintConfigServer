@@ -82,7 +82,13 @@ public class JobConfig {
     public Step step2() {
         return stepBuilderFactory.get(BATCH_NAME + "step 2")
                 .tasklet((stepContribution, chunkContext) -> {
-                    System.out.println("두번째 테스트");
+                    log.debug("============ 분석 메일 전송 데이터 호출 =============");
+
+                    analysisList.forEach(analysis -> {
+                        List<RecipientDTO> giveHeartFriendList = heartService.selectHeartList(analysis.getChild());
+
+                    });
+
                     return RepeatStatus.FINISHED;
                 }).build();
     }

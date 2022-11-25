@@ -95,6 +95,8 @@ public class JobConfig {
                         // 부모 호출
                         User parents = analysis.getChild().getUser();
 
+                        //플레이타임 조회
+                        String playTime =userService.selectPlayTime(analysis.getChild().getId());
 
                     });
 

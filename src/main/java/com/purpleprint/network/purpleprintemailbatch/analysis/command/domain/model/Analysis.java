@@ -70,9 +70,6 @@ public class Analysis {
     @Column(name = "play_place")
     private String playPlace;
 
-    @Column(name = "play_area")
-    private String playArea;
-
     @ManyToOne
     @JoinColumn(name = "child_id")
     private Child child;

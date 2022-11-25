@@ -27,5 +27,6 @@ public class PlayFriendDTO {
     private int friendId;
     private String friendName;
     private String friendCharacterUrl;
+    private String friendComment;
 
 }

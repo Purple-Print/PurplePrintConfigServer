@@ -4,6 +4,9 @@ import com.purpleprint.network.purpleprintemailbatch.user.command.domain.domain.
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * <pre>
  * Class : LoginRepository
@@ -21,4 +24,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface LoginRepository extends JpaRepository<Login, Integer> {
+    List<Login> findAllByChildIdAndLoginAtBetweenOrderByIdAsc(Integer id, Date date1, Date date2);
 }

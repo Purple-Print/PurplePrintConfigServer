@@ -5,6 +5,7 @@ import com.purpleprint.network.purpleprintemailbatch.analysis.command.domain.mod
 import com.purpleprint.network.purpleprintemailbatch.heart.command.application.dto.RecipientDTO;
 import com.purpleprint.network.purpleprintemailbatch.heart.query.service.HeartService;
 import com.purpleprint.network.purpleprintemailbatch.user.command.application.dto.PlayFriendDTO;
+import com.purpleprint.network.purpleprintemailbatch.user.command.domain.domain.User;
 import com.purpleprint.network.purpleprintemailbatch.user.query.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -90,6 +91,10 @@ public class JobConfig {
 
                         //함께 플레이한 사람 호출
                         List<PlayFriendDTO> playFriendList = userService.selectFriendList(analysis);
+
+                        // 부모 호출
+                        User parents = analysis.getChild().getUser();
+
 
                     });
 

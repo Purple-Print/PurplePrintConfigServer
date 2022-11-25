@@ -85,7 +85,11 @@ public class JobConfig {
                     log.debug("============ 분석 메일 전송 데이터 호출 =============");
 
                     analysisList.forEach(analysis -> {
+                        // 하트 준 사람 호출
                         List<RecipientDTO> giveHeartFriendList = heartService.selectHeartList(analysis.getChild());
+
+                        //함께 플레이한 사람 호출
+                        List<PlayFriendDTO> playFriendList = userService.selectFriendList(analysis);
 
                     });
 

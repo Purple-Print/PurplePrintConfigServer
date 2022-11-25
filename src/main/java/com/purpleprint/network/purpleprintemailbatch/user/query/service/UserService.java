@@ -19,8 +19,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * <pre>
@@ -70,7 +68,7 @@ public class UserService {
 
             playFriendDTO.setFriendId(child.getId());
             playFriendDTO.setFriendName(child.getName());
-
+            playFriendDTO.setFriendComment(analysis.getFriend1Comment());
             CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
 
             playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
@@ -84,7 +82,7 @@ public class UserService {
 
             playFriendDTO.setFriendId(child.getId());
             playFriendDTO.setFriendName(child.getName());
-
+            playFriendDTO.setFriendComment(analysis.getFriend2Comment());
             CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
 
             playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
@@ -97,7 +95,7 @@ public class UserService {
 
             playFriendDTO.setFriendId(child.getId());
             playFriendDTO.setFriendName(child.getName());
-
+            playFriendDTO.setFriendComment(analysis.getFriend3Comment());
             CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
 
             playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
@@ -110,7 +108,7 @@ public class UserService {
 
             playFriendDTO.setFriendId(child.getId());
             playFriendDTO.setFriendName(child.getName());
-
+            playFriendDTO.setFriendComment(analysis.getFriend4Comment());
             CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
 
             playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
@@ -120,10 +118,12 @@ public class UserService {
         return playFriendList;
     }
 
-    public String selectPlayTime(Integer id) {
+    public String selectPlayTime(Integer id, Date analysisAt) {
 
-        String t1 = LocalDate.now() + " 00:00:00";
-        String t2 = LocalDate.now() + " 23:59:59";
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        String t1 = dateFormat.format(analysisAt) + " 00:00:00";
+        String t2 = dateFormat.format(analysisAt) + " 23:59:59";
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

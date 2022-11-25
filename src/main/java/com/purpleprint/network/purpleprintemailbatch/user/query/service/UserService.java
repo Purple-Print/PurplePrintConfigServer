@@ -44,4 +44,65 @@ public class UserService {
 
         return childRepository.findById(recipient).get();
     }
+
+    public List<PlayFriendDTO> selectFriendList(Analysis analysis) {
+
+        List<PlayFriendDTO> playFriendList = new ArrayList<>();
+
+        if(analysis.getFriend1() != 0) {
+            PlayFriendDTO playFriendDTO = new PlayFriendDTO();
+
+            Child child = childRepository.findById(analysis.getFriend1()).get();
+
+            playFriendDTO.setFriendId(child.getId());
+            playFriendDTO.setFriendName(child.getName());
+
+            CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
+
+            playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
+            playFriendList.add(playFriendDTO);
+        }
+
+        if(analysis.getFriend2() != 0) {
+            PlayFriendDTO playFriendDTO = new PlayFriendDTO();
+
+            Child child = childRepository.findById(analysis.getFriend2()).get();
+
+            playFriendDTO.setFriendId(child.getId());
+            playFriendDTO.setFriendName(child.getName());
+
+            CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
+
+            playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
+            playFriendList.add(playFriendDTO);
+        }
+        if(analysis.getFriend3() != 0) {
+            PlayFriendDTO playFriendDTO = new PlayFriendDTO();
+
+            Child child = childRepository.findById(analysis.getFriend3()).get();
+
+            playFriendDTO.setFriendId(child.getId());
+            playFriendDTO.setFriendName(child.getName());
+
+            CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
+
+            playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
+            playFriendList.add(playFriendDTO);
+        }
+        if(analysis.getFriend4() != 0) {
+            PlayFriendDTO playFriendDTO = new PlayFriendDTO();
+
+            Child child = childRepository.findById(analysis.getFriend4()).get();
+
+            playFriendDTO.setFriendId(child.getId());
+            playFriendDTO.setFriendName(child.getName());
+
+            CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
+
+            playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
+            playFriendList.add(playFriendDTO);
+        }
+
+        return playFriendList;
+    }
 }

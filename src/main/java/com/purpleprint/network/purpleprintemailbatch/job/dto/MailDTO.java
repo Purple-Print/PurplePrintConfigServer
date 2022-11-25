@@ -34,8 +34,8 @@ public class MailDTO {
     private List<RecipientDTO> recipientList; //아이가 하트를 준 친구들
     private List<PlayFriendDTO> playFriendList; //아이와 친하게 논 친구들
     private String playPlace;   //논 장소(타입)
-    private String playArea;    //논 구역
     private int conCurrentFriend; //같이 논 친구들 수
     private String playTime;
-ap
+    private int giveHeartCount;     //하트를 준 개수
+    private String comment;
 }

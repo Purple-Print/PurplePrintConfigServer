@@ -47,9 +47,12 @@ public class HeartService {
         this.recipientCharacterService = recipientCharacterService;
     }
 
-    public List<RecipientDTO> selectHeartList(Child child) {
-        String t1 = LocalDate.now() + " 00:00:00";
-        String t2 = LocalDate.now() + " 23:59:59";
+    public List<RecipientDTO> selectHeartList(Child child, Date analysisAt) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        String t1 = dateFormat.format(analysisAt) + " 00:00:00";
+        String t2 = dateFormat.format(analysisAt) + " 23:59:59";
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

@@ -37,9 +37,6 @@ public class Analysis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "final_feedback")
-    private String finalFeedback;
-
     @Column(name = "friend1")
     private int friend1;
 
@@ -52,20 +49,6 @@ public class Analysis {
     @Column(name = "friend2_comment")
     private String friend2Comment;
 
-    @Column(name = "friend3")
-    private int friend3;
-
-    @Column(name = "friend3_comment")
-    private String friend3Comment;
-
-    @Column(name = "friend4")
-    private int friend4;
-
-    @Column(name = "friend4_comment")
-    private String friend4Comment;
-
-    @Column(name = "concurrent_child")
-    private int concurrentChild;
 
     @Column(name = "play_place")
     private String playPlace;

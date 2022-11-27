@@ -47,7 +47,7 @@ public class JobSchedulerConfig {
         this.jobLauncher = jobLauncher;
     }
 
-    @Scheduled(cron = "0 0 0,7 * * *")
+    @Scheduled(cron = "0 0 0-8 * * *")
     public void jobSchdled() {
 
         Map<String, JobParameter> config = new HashMap<>();

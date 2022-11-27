@@ -86,7 +86,7 @@ public class MailService {
 
         if(!mail.getPlayFriendList().isEmpty()) {
             sendText += "       <div style='background-image:url(https://purpleprint-bucket.s3.ap-northeast-2.amazonaws.com/email/001.png); width:1000px; height: 600px; background-size: cover; display:flex;'> \n"
-                        + "         <div style='width:100%; display: flex; margin:25% 12%;'> \n";
+                        + "         <div style='width:100%; display: flex;  margin:25% 25% 0 30%;'> \n";
 
             for(PlayFriendDTO playFriendDTO : mail.getPlayFriendList()) {
                 sendText +="        <div style='margin:10px;'>\n"
@@ -128,15 +128,9 @@ public class MailService {
                     + "                     <div>"+ mail.getPlayTime() +"</div>\n"
                     + "                 </div>\n"
                     + "              <div style='width:100%; text-align:center;'>\n"
-                    + "                 <div style='font-size:20px; font-weight:bold;'>만난 친구</div>"
-                    + "                 <div>"+ mail.getConCurrentFriend() +"</div>\n"
-                    + "                 <div style='font-size:20px; font-weight:bold; margin-top:20px;'>아이가 하트를 준 친구 수</div>"
+                    + "                 <div style='font-size:20px; font-weight:bold;'>아이가 하트를 준 친구 수</div>"
                     + "                 <div>"+ mail.getGiveHeartCount() +"</div>\n"
                     + "              </div>\n"
-                    + "             <div style='width:100%;'>\n"
-                    + "                 <div style='font-size:20px; font-weight:bold;'>COMMENT</div>\n"
-                    + "                 <div>" + mail.getComment() + "</div>\n"
-                    + "             </div>\n"
                     + "          </div>\n"
                     + "       </div>\n"
                     + "     </div>\n"

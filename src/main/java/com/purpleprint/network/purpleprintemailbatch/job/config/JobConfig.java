@@ -127,10 +127,8 @@ public class JobConfig {
                         mail.setRecipientList(giveHeartFriendList);
                         mail.setPlayFriendList(playFriendList);
                         mail.setPlayPlace(analysis.getPlayPlace());
-                        mail.setConCurrentFriend(analysis.getConcurrentChild());
                         mail.setPlayTime(playTime);
                         mail.setGiveHeartCount(giveHeartFriendList.size());
-                        mail.setComment(analysis.getFinalFeedback());
                         mail.setAnalysisDate(analysisDate);
                         System.out.println(mail);
                         mailList.add(mail);

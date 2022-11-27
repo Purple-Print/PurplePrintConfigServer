@@ -61,7 +61,7 @@ public class UserService {
 
         List<PlayFriendDTO> playFriendList = new ArrayList<>();
 
-        if(analysis.getFriend1() != 0) {
+        if(analysis.getFriend1() != null) {
             PlayFriendDTO playFriendDTO = new PlayFriendDTO();
 
             Child child = childRepository.findById(analysis.getFriend1()).get();
@@ -75,7 +75,7 @@ public class UserService {
             playFriendList.add(playFriendDTO);
         }
 
-        if(analysis.getFriend2() != 0) {
+        if(analysis.getFriend2() != null) {
             PlayFriendDTO playFriendDTO = new PlayFriendDTO();
 
             Child child = childRepository.findById(analysis.getFriend2()).get();

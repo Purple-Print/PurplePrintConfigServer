@@ -88,32 +88,6 @@ public class UserService {
             playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
             playFriendList.add(playFriendDTO);
         }
-        if(analysis.getFriend3() != 0) {
-            PlayFriendDTO playFriendDTO = new PlayFriendDTO();
-
-            Child child = childRepository.findById(analysis.getFriend3()).get();
-
-            playFriendDTO.setFriendId(child.getId());
-            playFriendDTO.setFriendName(child.getName());
-            playFriendDTO.setFriendComment(analysis.getFriend3Comment());
-            CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
-
-            playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
-            playFriendList.add(playFriendDTO);
-        }
-        if(analysis.getFriend4() != 0) {
-            PlayFriendDTO playFriendDTO = new PlayFriendDTO();
-
-            Child child = childRepository.findById(analysis.getFriend4()).get();
-
-            playFriendDTO.setFriendId(child.getId());
-            playFriendDTO.setFriendName(child.getName());
-            playFriendDTO.setFriendComment(analysis.getFriend4Comment());
-            CharacterFile characterfile = awnerCharacterService.selectAwnerCharacter(child.getId());
-
-            playFriendDTO.setFriendCharacterUrl(characterfile.getUrl());
-            playFriendList.add(playFriendDTO);
-        }
 
         return playFriendList;
     }

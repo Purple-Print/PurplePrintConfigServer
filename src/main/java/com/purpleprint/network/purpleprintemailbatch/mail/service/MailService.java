@@ -44,8 +44,6 @@ public class MailService {
         helper.setFrom(email);
         helper.setTo(mail.getParentsMail());
 
-        System.out.println(mail.getPlayTime());
-
         String sendText = "<!DOCTYPE html>\n" +
                 "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\">\n" +
                 "<head>\n" +
@@ -161,7 +159,7 @@ public class MailService {
                     + "</body>\n"
                 + "</html>";
 
-        helper.setSubject("[필로칼로] " +mail.getChildName() + "의 행동 분석 보고서 발송" );
+        helper.setSubject("[필로칼로] "+ mail.getAnalysisDate() + " " +mail.getChildName() + "의 행동 분석 보고서 발송" );
         helper.setText("text/html", sendText);
         mailSender.send(message);
 

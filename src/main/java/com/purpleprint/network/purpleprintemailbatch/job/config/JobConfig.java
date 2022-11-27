@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,6 +118,10 @@ public class JobConfig {
                         //플레이타임 조회
                         String playTime =userService.selectPlayTime(analysis.getChild().getId(), analysis.getAnalysisAt());
 
+                        //분석일자
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                        String analysisDate = dateFormat.format(analysis.getAnalysisAt());
+
                         mail.setChildName(analysis.getChild().getName());
                         mail.setParentsMail(parents.getEmail());
                         mail.setRecipientList(giveHeartFriendList);
@@ -126,6 +131,7 @@ public class JobConfig {
                         mail.setPlayTime(playTime);
                         mail.setGiveHeartCount(giveHeartFriendList.size());
                         mail.setComment(analysis.getFinalFeedback());
+                        mail.setAnalysisDate(analysisDate);
                         System.out.println(mail);
                         mailList.add(mail);
                     }

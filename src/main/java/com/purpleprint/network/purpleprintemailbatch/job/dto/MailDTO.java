@@ -38,4 +38,5 @@ public class MailDTO {
     private String playTime;
     private int giveHeartCount;     //하트를 준 개수
     private String comment;
+    private String analysisDate;
 }

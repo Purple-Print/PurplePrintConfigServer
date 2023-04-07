@@ -89,9 +89,7 @@ public class JobConfig {
         return stepBuilderFactory.get(BATCH_NAME + "step 1")
                 .tasklet((stepContribution, chunkContext) -> {
                     log.debug("============ 분석 리스트 호출 =============");
-                    System.out.println("1. 분석 리스트 호출");
                     analysisList = analysisService.selectAnalysisList();
-                    System.out.println(analysisList);
                     return RepeatStatus.FINISHED;
                 }).build();
     }
